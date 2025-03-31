@@ -27,7 +27,7 @@ public:
 	int getVT();
 	string getstatus();
 	string getpatienttype();
-
+	int penaltytime();
 
 };
 	
