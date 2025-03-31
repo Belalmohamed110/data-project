@@ -12,7 +12,6 @@ private:
 	string status;
 	string patienttype;
 	LinkedQueue<string>requiredtreatment;
-	bool IsRecv;
 	int duration[3];
 	int treatmentcount;
 
