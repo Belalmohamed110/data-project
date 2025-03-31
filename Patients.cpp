@@ -69,6 +69,15 @@ string Patients::getpatienttype()
 	return patienttype;
 }
 
-
+int Patients::penaltytime()
+{
+	if (VT > PT)
+	{
+		return ((PT + VT) / 2);
+	}
+	else
+	{
+		return false;
+	}
 
 
