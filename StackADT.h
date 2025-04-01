@@ -10,6 +10,8 @@
 template<typename T>
 class StackADT
 {
+protected:
+    int count; // Counter for number of elements in stack
 public:
    /** checks whether this stack is empty.
     @return  True if the stack is empty, or false if not. */
