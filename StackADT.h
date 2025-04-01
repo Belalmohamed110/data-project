@@ -39,6 +39,7 @@ public:
    /** Destroys this stack and frees its assigned memory. */
    virtual ~StackADT() { }
   void print()
+int GetCount() const
 
 
 
