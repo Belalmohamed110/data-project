@@ -57,6 +57,15 @@ public:
 		TopEntry = items[top];		 
 		return true;
 	}  // end peek
+
+  int GetCount() const {
+        return count;
+    }
+
+
+
+
+
 	
 }; // end ArrayStack
 
