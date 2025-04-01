@@ -79,5 +79,28 @@ int Patients::penaltytime()
 	{
 		return false;
 	}
+ostream& operator<<(ostream& out, const Patients* patient) {
+    if (patient) {
+        out << "Patient ID: " << patient->PID
+            << ", Type: " << patient->patienttype
+            << ", Status: " << patient->status
+            << ", Arrival Time: " << patient->VT
+            << ", Appointment Time: " << patient->PT;
+    } else {
+        out << "Null Patient Pointer";
+    }
+    return out;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
