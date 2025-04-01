@@ -13,7 +13,7 @@ private:
 	string patienttype;
 	LinkedQueue<string>requiredtreatment;
 	int duration[3];
-	int treatmentcount;
+	int treatmentcount=0;
 
 public:
 	void setPID(int id);
