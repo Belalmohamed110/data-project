@@ -59,9 +59,9 @@ public:
     bool isEmpty() const {
         return head == nullptr;
     }
-getCountQueue() const
+getCountPriQueue() const
 
-void printQueue()
+void printPriQueue()
 
 
 
