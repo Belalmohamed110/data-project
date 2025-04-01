@@ -58,9 +58,10 @@ public:
 		return true;
 	}  // end peek
 
-  int GetCount() const {
+  int GetCountStack() const {
         return count;
     }
+void printStack()
 
 
 
