@@ -11,8 +11,18 @@ private:
 	int VT;
 	string status;
 	string patienttype;
-	LinkedQueue<string>requiredtreatment;
-	int duration[3];
+	class Treatment
+	{
+	public:
+		string name;
+		int duration;
+		Treatment(string n,int d)
+		{
+			name = n;
+			duration = d;
+		}
+	};
+	LinkedQueue<Treatment>requiredtreatment;
 	int treatmentcount=0;
 
 public:
@@ -21,15 +31,18 @@ public:
 	void setVT(int arrivaltime);
 	void setstatus(string s);
 	void setpatienttype(string t);
-	void AddTreatment(string &t, int d);
+	void settreatmentcount(int c);
+	void AddTreatment(string n, int d);
 	int getPID();
-	int getPT();
+    int getPT();
 	int getVT();
 	string getstatus();
 	string getpatienttype();
+	int gettreatmentcount();
 	int penaltytime();
-  friend ostream& operator<<(ostream& out, const Patients* patient);
+	friend ostream& operator<<(ostream& out, const Patients* patient);
+	
+
 
 };
 	
-
