@@ -59,4 +59,15 @@ public:
     bool isEmpty() const {
         return head == nullptr;
     }
+getCountQueue() const
+
+void printQueue()
+
+
+
+
+
+
+
+
 };
