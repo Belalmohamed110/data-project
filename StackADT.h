@@ -38,5 +38,15 @@ public:
    
    /** Destroys this stack and frees its assigned memory. */
    virtual ~StackADT() { }
+  void print()
+
+
+
+
+
+
+
+
+
 }; // end StackADT
 #endif
