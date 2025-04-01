@@ -28,6 +28,7 @@ public:
 	string getstatus();
 	string getpatienttype();
 	int penaltytime();
+  friend ostream& operator<<(ostream& out, const Patients* patient);
 
 };
 	
