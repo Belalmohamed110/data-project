@@ -3,27 +3,35 @@
 #include"Patients.h"
 #include"priQueue.h"
 using namespace std;
-void LatePatients::AddPatient(Patients p)
+void LatePatients::AddPatient(Patients*p)
 {
-	int pri=p.getPT() + p.penaltytime();
+	int pri=p->getPT() + p->penaltytime();
 	LATE.enqueue(p, -pri);
 
 }
 
 void LatePatients::NewList(int currenttimestep)
 { 
-	Patients p;
-	int c = p.getVT() + p.penaltytime();
-	int pri =p.getPT() + p.penaltytime();
-
-	if (currenttimestep <= c)
+	if (LATE.isEmpty())
+	{
+	    return ;
+	}
+	Patients *p;
+	int pri = p->getPT() + p->penaltytime();
+	if(!LATE.peek(p,pri))
+	{
+		return ;
+	}
+	int c = p->getVT() + p->penaltytime();
+	
+    if (currenttimestep <= c)
 	{
 		return;
 	}
-	if(!LATE.isEmpty())
+	else
 	{ 
-		Patients P;
-		LATE.dequeue(P,pri);
+		LATE.dequeue(p,pri);
+		
 	}
 }
 
