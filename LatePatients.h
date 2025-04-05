@@ -6,10 +6,11 @@ using namespace std;
 class LatePatients
 {
 private:
-	priQueue<Patients>LATE;
+	priQueue<Patients*>LATE;
+	const string ListName = "LATE";
 	
 public:
-	void AddPatient(Patients p);
+	void AddPatient(Patients * p);
 	void NewList(int currenttimestep );
 
 };
