@@ -6,24 +6,44 @@
 
 using namespace std;
 
-treatment::treatment(string type, int d) {
+treatment::treatment(string& type, int d) {
 	TreatementType = type;
 	duration = d;
+	starttime = -1;
+	endtime = -1;
+	if (type != "E" && type != "U" && type != "X") {
+		cout << "Invalid Treatement type, Use: E / U / X" << endl;
+		return;
+	}
+	if (d <= 0) {
+		cout << "Invalid duration , duration must be >0" << endl;
+		return;
+	}
 }
-void treatment :: settype(string type) {
+
+void treatment :: settype(string& type) {
+	if (type != "E" && type != "U" && type != "X") {
+		cout << "Invalid Treatement type, Use: E / U / X" << endl;
+		return;
+	}
 	TreatementType = type;
 }
 
 void treatment :: setduration(int d) {
-	duration =d ;
+	
+	if (d <= 0) {
+		cout << "Invalid duration , duration must be >0" << endl;
+		return;
+	}
+	duration = d;
 }
 
 void treatment::start(int currentTime) {
+	if (currentTime < 0) {
+		cout << "Invalid time , time cannot be negative" << endl;
+		return;
+	}
 	starttime = currentTime;
-}
-
-void treatment :: setstarttime(int st) {
-  starttime = st;
 }
 
 string treatment:: gettype() {
