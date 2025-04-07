@@ -4,13 +4,13 @@
 using namespace std;
 
 
-atients::Patients(int id, int pt, int vt, string &s, string &t) :
+Patients::Patients(int id, int pt, int vt, string& s, string& t) :
 	PID(id), PT(pt), VT(vt), status(s), patienttype(t) {
 }
 
 
 void Patients::setPID(int id)
-{ 
+{
 	PID = id;
 }
 
@@ -39,23 +39,15 @@ void Patients::settreatmentcount(int c)
 	treatmentcount = c;
 }
 
-void Patients::AddTreatment(string n, int d)
-{ 
+void Patients::AddTreatment(treatment* t) {
+	treatments.enqueue(t); }
 
+treatment* Patients::getNextTreatment() {
+	if (treatments.isEmpty()) return nullptr;
 
-	if (treatmentcount >= 3)
-	{
-		return;
-	}
-		else
-		{
-		Treatment NEWT(n,d);
-			requiredtreatment.enqueue(NEWT);
-			treatmentcount++;
-
-		}
-	}
-	
+	treatments.dequeue(currentTreatment);
+	return currentTreatment;
+}
 
 int Patients::getPID()
 {
@@ -98,20 +90,18 @@ int Patients::penaltytime()
 		return 0;
 	}
 }
-	ostream& operator<<(ostream & out, const Patients * patient) {
-		if (patient) {
-			out << "Patient ID: " << patient->PID
-				<< ", Type: " << patient->patienttype
-				<< ", Status: " << patient->status
-				<< ", Arrival Time: " << patient->VT
-				<< ", Appointment Time: " << patient->PT;
-		}
-		else {
-			out << "Null Patient Pointer";
-		}
-		return out;
+ostream& operator<<(ostream& out, const Patients* patient) {
+	if (patient) {
+		out << "Patient ID: " << patient->PID
+			<< ", Type: " << patient->patienttype
+			<< ", Status: " << patient->status
+			<< ", Arrival Time: " << patient->VT
+			<< ", Appointment Time: " << patient->PT;
+	}
+	else {
+		out << "Null Patient Pointer";
+	}
+	return out;
 }
 
-
-
-
+treatment* Patients::getCurrentTreatment(){ return currentTreatment; }
