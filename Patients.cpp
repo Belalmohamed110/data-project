@@ -4,14 +4,10 @@
 using namespace std;
 
 
-Patients::Patients(int id, int appointmenttime, int arrivaltime, string& s, string &t)
-{
-	PID = id;
-	PT = appointmenttime;
-	VT = arrivaltime;
-	status = s;
-	patienttype = t;
+atients::Patients(int id, int pt, int vt, string status, string type) :
+	PID(id), PT(pt), VT(vt), status(status), patienttype(type) {
 }
+
 
 void Patients::setPID(int id)
 { 
