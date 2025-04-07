@@ -3,14 +3,24 @@
 #include <string>
 using namespace std;
 
+
+Patients::Patients(int id, int appointmenttime, int arrivaltime, string& s, string &t)
+{
+	PID = id;
+	PT = appointmenttime;
+	VT = arrivaltime;
+	status = s;
+	patienttype = t;
+}
+
 void Patients::setPID(int id)
 { 
 	PID = id;
 }
 
-void Patients::setPT(int appointementtime)
+void Patients::setPT(int appointmenttime)
 {
-	PT = appointementtime;
+	PT = appointmenttime;
 }
 
 void Patients::setVT(int arrivaltime)
@@ -18,12 +28,12 @@ void Patients::setVT(int arrivaltime)
 	VT = arrivaltime;
 }
 
-void Patients::setstatus(string s)
+void Patients::setstatus(string& s)
 {
 	status = s;
 }
 
-void Patients::setpatienttype(string t)
+void Patients::setpatienttype(string& t)
 {
 	patienttype = t;
 }
@@ -91,6 +101,7 @@ int Patients::penaltytime()
 	{
 		return 0;
 	}
+}
 	ostream& operator<<(ostream & out, const Patients * patient) {
 		if (patient) {
 			out << "Patient ID: " << patient->PID
@@ -104,16 +115,6 @@ int Patients::penaltytime()
 		}
 		return out;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
