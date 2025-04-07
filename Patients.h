@@ -2,6 +2,8 @@
 #include<iostream>
 #include<string>
 #include"LinkedQueue.h"
+#include"treatment.h"
+
 using namespace std;
 class Patients
 {
@@ -11,40 +13,34 @@ private:
 	int VT;
 	string status;
 	string patienttype;
-	class Treatment
-	{
-	public:
-		string name;
-		int duration;
-		Treatment(string n,int d)
-		{
-			name = n;
-			duration = d;
-		}
-	};
-	LinkedQueue<Treatment>requiredtreatment;
-	int treatmentcount=0;
+	
+	LinkedQueue<treatment*> treatments;
+	treatment* currentTreatment;
+	int treatmentcount = 0;
 
 public:
-	Patients(int id,int appointmenttime,int arrivaltime,string& s,string& t);
+	Patients(int id, int appointmenttime, int arrivaltime, string& s, string& t);
 	void setPID(int id);
 	void setPT(int appointmenttime);
 	void setVT(int arrivaltime);
 	void setstatus(string& s);
 	void setpatienttype(string& t);
 	void settreatmentcount(int c);
-	void AddTreatment(string n, int d);
+
+	void AddTreatment(treatment* t);
+	treatment* getNextTreatment();
+
 	int getPID();
-    int getPT();
+	int getPT();
 	int getVT();
 	string getstatus();
 	string getpatienttype();
 	int gettreatmentcount();
 	int penaltytime();
 	friend ostream& operator<<(ostream& out, const Patients* patient);
-	
+
+	treatment* getCurrentTreatment();
 
 
 };
-	
 
