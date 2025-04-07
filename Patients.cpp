@@ -4,8 +4,8 @@
 using namespace std;
 
 
-atients::Patients(int id, int pt, int vt, string status, string type) :
-	PID(id), PT(pt), VT(vt), status(status), patienttype(type) {
+atients::Patients(int id, int pt, int vt, string &s, string &t) :
+	PID(id), PT(pt), VT(vt), status(s), patienttype(t) {
 }
 
 
