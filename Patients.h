@@ -26,11 +26,12 @@ private:
 	int treatmentcount=0;
 
 public:
+	Patients(int id,int appointmenttime,int arrivaltime,string& s,string& t);
 	void setPID(int id);
-	void setPT(int appointementtime);
+	void setPT(int appointmenttime);
 	void setVT(int arrivaltime);
-	void setstatus(string s);
-	void setpatienttype(string t);
+	void setstatus(string& s);
+	void setpatienttype(string& t);
 	void settreatmentcount(int c);
 	void AddTreatment(string n, int d);
 	int getPID();
@@ -46,3 +47,4 @@ public:
 
 };
 	
+
