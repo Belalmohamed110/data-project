@@ -1,28 +1,48 @@
-    void ClearConsole() {
-        Sleep(5000);  // Wait for 5 seconds (Windows only)
-        system("cls"); // Clear console (Windows only)
-    }
+   #include "Ui.h"
+#include "StackADT.h"
+#include "QueueADT.h"
+#include "Patients.h"
+#include "Resources.h"
+#include <iostream>
+using namespace std;
 
-    void printPatients(Patients* patientList[], int size) {
-        for (int i = 0; i < size; i++) {
-            cout << *patientList[i] << endl;  // Assuming Patients has overloaded operator<<
+UI::UI() {
+    // Constructor implementation if needed
+}
+
+void UI::ClearConsole() {
+    system("cls");  // For Windows
+}
+
+template <typename T>
+void UI::printStack(const StackADT<T>& stack) {
+    cout << "\n=== Stack Contents ===" << endl;
+    stack.printStack();  // This will use the printStack function from StackADT
+}
+
+template <typename T>
+void UI::printStackCount(const StackADT<T>& stack) {
+    cout << "\n=== Stack Statistics ===" << endl;
+    cout << "Number of elements in stack: " << stack.GetCountStack() << endl;
+}
+
+template <typename T>
+void UI::printQueueCount(const QueueADT<T>& queue) {
+    cout << "\n=== Queue Statistics ===" << endl;
+    cout << "Number of elements in queue: " << queue.getCount() << endl;
+}
+
+void UI::printPatients(Patients* patientList[], int size) {
+    cout << "\n=== Patient List ===" << endl;
+    for (int i = 0; i < size; i++) {
+        if (patientList[i] != nullptr) {
+            cout << *patientList[i] << endl;
         }
     }
+}
 
-    void printResource(const Resource& res) {
-        cout << res << endl;
-    }
-
-    // Function to print any stack passed to it
-    template <typename T>
-    void printStack(const StackADT<T>& stack) {
-        stack.print();  // Calls the appropriate print function from the specific stack
-    }
-
-    // Function to print stack count
-    template <typename T>
-    void printStackCount(const StackADT<T>& stack) {
-        cout << "Number of elements in stack: " << stack.getCount() << endl;
-    }
-};
-
+void UI::printResource(const Resource& res) {
+    cout << "\n=== Resource Information ===" << endl;
+    // Add your resource printing logic here
+    // You might want to add getter methods in Resource class to access ID and type
+}
