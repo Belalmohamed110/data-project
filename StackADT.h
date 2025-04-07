@@ -7,12 +7,23 @@
 #ifndef STACK_ADT_
 #define STACK_ADT_
 
+#include <iostream>
+using namespace std;
+
 template<typename T>
 class StackADT
 {
 protected:
     int count; // Counter for number of elements in stack
 public:
+   /** Constructor initializes count to 0 */
+   StackADT() {
+       count = 0;
+   }
+
+   /** Destroys this stack and frees its assigned memory. */
+   virtual ~StackADT() { }
+
    /** checks whether this stack is empty.
     @return  True if the stack is empty, or false if not. */
    virtual bool isEmpty() const = 0;
@@ -34,20 +45,25 @@ public:
     @post  If the operation was successful, the top item of the stack
        has been copied to TopEntry parameter.
     @return  True if stack is not empty or false if not. */
-   virtual bool peek(T& TopEntry) const = 0 ;
-   
-   /** Destroys this stack and frees its assigned memory. */
-   virtual ~StackADT() { }
-  void printStack()
-int GetCountStack() const
+   virtual bool peek(T& TopEntry) const = 0;
 
+   /** Prints the stack contents */
+   void printStack() const {
+       cout << "\n=== Stack Contents ===" << endl;
+       cout << "Number of elements in stack: " << count << endl;
+   }
 
-
-
-
-
-
-
-
+   /** Returns the number of elements in the stack */
+   int GetCountStack() const { 
+       return count; 
+   }
 }; // end StackADT
 #endif
+
+
+
+
+
+
+
+
