@@ -19,5 +19,9 @@ public:
 
 	// Friend function declaration for operator<<
 	friend ostream& operator<<(ostream& os, const Resources& res);
+        void print() const
+
 };
+
+
 
