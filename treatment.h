@@ -13,18 +13,19 @@ private:
 	int endtime;
 	
 public:
-	void settype(string type) {}
-	void setduration(int d) {}
-	void setstarttime(int startime) {}
+	treatment(string& type, int d);
 
-	treatment(string type, int d) {}
-		
-	void  start(int currentTime) {}
+	void settype(string& type);
+	void setduration(int d);
 	
-	string gettype() {}
-	int getduration() {}
-	int getstarttime() {}
-	void getEndtime() {}
+		
+	void  start(int currentTime);
+	
+
+	string gettype();
+	int getduration();
+	int getstarttime();
+	void getEndtime();
 
 };
 
