@@ -15,42 +15,50 @@
 template<typename T>
 class ArrayStack : public StackADT<T>
 {
-	enum { MAX_SIZE = 100 };
 private:
+	static const int MAX_SIZE = 100;  // Maximum size of the stack
 	T items[MAX_SIZE];		// Array of stack items
 	int top;                   // Index to top of stack
 	
 public:
 
+	/** Constructor */
 	ArrayStack()
 	{
 		top = -1;
+		this->count = 0;  // Initialize count from base class
 	}  // end default constructor
 
-	bool isEmpty() const
+	/** Check if stack is empty */
+	bool isEmpty() const override
 	{
-		return top == -1;	
+		return top < 0;	
 	}  // end isEmpty
 
-	bool push(const T& newEntry)
+	/** Add new item to top of stack */
+	bool push(const T& newEntry) override
 	{
-		if( top == MAX_SIZE-1 ) return false;	//Stack is FULL
-
-		top++;
-		items[top] = newEntry;   
-		return true;
+		if (top < MAX_SIZE - 1) {  // Check if stack is not full
+			items[++top] = newEntry;   
+			this->count++;  // Increment count (inherited from StackADT)
+			return true;
+		}
+		return false;  // Stack is full
 	}  // end push
 
-	bool pop(T& TopEntry)
+	/** Remove top item from stack */
+	bool pop(T& TopEntry) override
 	{
 		if (isEmpty()) return false;
 		
 		TopEntry = items[top];		 
 		top--;
+		this->count--;  // Decrement count (inherited from StackADT)
 		return true;
 	}  // end pop
 	
-	bool peek(T& TopEntry) const
+	/** Look at top item without removing it */
+	bool peek(T& TopEntry) const override
 	{
 		if (isEmpty()) return false;
 		
@@ -58,16 +66,24 @@ public:
 		return true;
 	}  // end peek
 
-  int GetCountStack() const {
-        return count;
-    }
-void printStack()
+	int GetCountStack() const {
+		return this->count;
+	}
 
-
-
-
-
-	
+	/** Print all items in the stack */
+	void printStack() const {
+		cout << "\n=== Stack Contents ===" << endl;
+		cout << "Number of elements in stack: " << this->count << endl;
+		
+		if (!isEmpty()) {
+			cout << "Items (top to bottom):" << endl;
+			for (int i = top; i >= 0; i--) {
+				cout << items[i] << endl;
+			}
+		} else {
+			cout << "Stack is empty" << endl;
+		}
+	}
 }; // end ArrayStack
 
 #endif
