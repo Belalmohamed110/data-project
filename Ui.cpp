@@ -1,6 +1,8 @@
-   #include "Ui.h"
+#include "Ui.h"
 #include "StackADT.h"
 #include "QueueADT.h"
+#include "LinkedQueue.h"
+#include "priQueue.h"
 #include "Patients.h"
 #include "Resources.h"
 #include <iostream>
@@ -32,6 +34,17 @@ void UI::printQueueCount(const QueueADT<T>& queue) {
     cout << "Number of elements in queue: " << queue.getCount() << endl;
 }
 
+template <typename T>
+void UI::printPriQueue(const priQueue<T>& pqueue) {
+    pqueue.print();  // Using the print method from priQueue
+}
+
+template <typename T>
+void UI::printPriQueueCount(const priQueue<T>& pqueue) {
+    cout << "\n=== Priority Queue Statistics ===" << endl;
+    cout << "Number of elements in priority queue: " << pqueue.getCount() << endl;
+}
+
 void UI::printPatients(Patients* patientList[], int size) {
     cout << "\n=== Patient List ===" << endl;
     for (int i = 0; i < size; i++) {
@@ -43,6 +56,5 @@ void UI::printPatients(Patients* patientList[], int size) {
 
 void UI::printResource(const Resource& res) {
     cout << "\n=== Resource Information ===" << endl;
-    // Add your resource printing logic here
-    // You might want to add getter methods in Resource class to access ID and type
+    res.print();  // Using the print method from Resource class
 }
