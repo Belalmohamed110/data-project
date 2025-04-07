@@ -1,15 +1,19 @@
-#pragma once
+pragma once
 #include "priNode.h"
-
+#include <iostream>
+using namespace std;
 
 //This class impelements the priority queue as a sorted list (Linked List)
 //The item with highest priority is at the front of the queue
 template <typename T>
 class priQueue
 {
+private:
     priNode<T>* head;
+    int count;  // Counter for number of elements
+
 public:
-    priQueue() : head(nullptr) {}
+    priQueue() : head(nullptr), count(0) {}
 
     ~priQueue() {
         T tmp;
@@ -22,18 +26,18 @@ public:
         priNode<T>* newNode = new priNode<T>(data, priority);
 
         if (head == nullptr || priority > head->getPri()) {
-            
             newNode->setNext(head);
             head = newNode;
-            return;
         }
-       
-        priNode<T>* current = head;        
-        while (current->getNext() && priority <= current->getNext()->getPri()) {
-            current = current->getNext();
+        else {
+            priNode<T>* current = head;        
+            while (current->getNext() && priority <= current->getNext()->getPri()) {
+                current = current->getNext();
+            }
+            newNode->setNext(current->getNext());
+            current->setNext(newNode);        
         }
-        newNode->setNext( current->getNext());
-        current->setNext( newNode);        
+        count++;  // Increment count after successful enqueue
     }
 
     bool dequeue(T& topEntry, int& pri) {
@@ -44,6 +48,7 @@ public:
         priNode<T>* temp = head;
         head = head->getNext();
         delete temp;
+        count--;  // Decrement count after successful dequeue
         return true;
     }
 
@@ -51,23 +56,38 @@ public:
         if (isEmpty())
             return false;
 
-        topEntry = head->getItem();
-        pri = head->getPri();
+        topEntry = head->getItem(pri);
         return true;
     }
 
     bool isEmpty() const {
         return head == nullptr;
     }
-getCountPriQueue() const
 
-void printPriQueue()
+    // Get the number of elements in the priority queue
+    int getCount() const {
+        return count;
+    }
 
-
-
-
-
-
-
-
+    // Print the priority queue contents
+    void print() const {
+        cout << "\n=== Priority Queue Contents ===" << endl;
+        cout << "Number of elements: " << count << endl;
+        
+        if (!isEmpty()) {
+            cout << "Items (Highest to Lowest Priority):" << endl;
+            priNode<T>* current = head;
+            int position = 1;
+            
+            while (current != nullptr) {
+                int pri;
+                T item = current->getItem(pri);
+                cout << position << ". Priority: " << pri << ", Item: " << item << endl;
+                current = current->getNext();
+                position++;
+            }
+        } else {
+            cout << "Priority Queue is empty" << endl;
+        }
+    }
 };
