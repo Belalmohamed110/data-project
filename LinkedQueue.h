@@ -203,8 +203,3 @@ LinkedQueue<T>::LinkedQueue(const LinkedQueue<T> & LQ)
 getCountPriQueue() const
 
 void printPriQueue()
-
-
-
-
-#endif
