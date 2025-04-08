@@ -3,29 +3,132 @@
 #include"Resources.h"
 #include "Scheduler.h"
 #include "LatePatients.h"
+#include <fstream>
 
 using namespace std;
+
 Scheduler::Scheduler() {
-    LoadPatientstoAll("patients.txt");
+
 }
+
+
 void Scheduler::LoadPatientstoAll(string filename) {
-    ifstream file(filename);
-    if (!file.is_open()) {
-        cout << "Error: Unable to open file " << filename << endl;
-        return;
-    }
+    {
+        std::ifstream inputFile("Input.txt");
+        if (!inputFile.is_open())
+        {
+            std::cerr << "Error: Unable to open input file." << std::endl;
+            return;
+        }
 
-    int id;
-    int vt, pt;
-    while (file >> id >> vt >> pt) { // hay2ra bel tarteb da 
-        Patients newPatient(id, vt, pt);
-        ALLpatients.enqueue(newPatient); // 
-    }
+        try
+        {
+            inputFile >> NG;
 
-    file.close();
-    cout << "Patients are in ALL Patients " << filename << endl;
+            gymCapacities = new int[NG];
+            for (int i = 0; i < NG; ++i)
+            {
+                inputFile >> gymCapacities[i];
+            }
+
+            inputFile >> numPatients;
+
+            allPatients = new Patients * [numPatients];
+            for (int i = 0; i < numPatients; ++i)
+            {
+                int id = i;
+                char status = 'w';
+                allPatients[i] = new patient(id, 0, 0, status, "", 0);
+                inputFile >> allPatients[i]->type >> allPatients[i]->Appointment_time >> allPatients[i]->Arrival_time;
+                inputFile >> allPatients[i]->Num_of_treatments;
+
+                std::pair<char, int>* treatments = new std::pair<char, int>[allPatients[i]->Num_of_treatments];
+
+                for (int j = 0; j < allPatients[i]->Num_of_treatments; j++)
+                {
+                    inputFile >> treatments[j].first >> treatments[j].second;
+                }
+                allPatients[i]->setTreatments(treatments);
+            }
+
+            inputFile.close();
+        }
+        catch (std::exception& e)
+        {
+            std::cerr << "Error: " << e.what() << std::endl;
+            inputFile.close();
+        }
+    }
 }
-
+//void Scheduler::LoadPatientstoAll(string filename) {
+//    ifstream file(filename);
+//    if (!file.is_open()) {
+//        cout << "Error: Unable to open file " << filename << endl;
+//        return;
+//    }
+//
+//    // Read the 4 header lines
+//    string line;
+//    int ne, nu, nx;         // Line 1: devices/rooms
+//    int cap1, cap2;         // Line 2: capacities
+//    int pcancel, presc;     // Line 3: probabilities
+//    int numPatients;        // Line 4: patient count
+//    
+//    // Read devices/rooms
+//    getline(file, line);
+//    istringstream(line) >> ne >> nu >> nx;
+//    
+//    // Read capacities
+//    getline(file, line);
+//    istringstream(line) >> cap1 >> cap2;
+//    
+//    // Read probabilities
+//    getline(file, line);
+//    istringstream(line) >> pcancel >> presc;
+//    
+//    // Read patient count
+//    getline(file, line);
+//    istringstream(line) >> numPatients;
+//    
+//    // Read each patient
+//    while (getline(file, line)) {
+//        if (line.empty()) continue;
+//        
+//        istringstream iss(line);
+//        char type;
+//        int pt, vt, nt;
+//        
+//        iss >> type >> pt >> vt >> nt;
+//        
+//        string status = "New";
+//        string patientType = (type == 'N') ? "Normal" : "Recovering";
+//        
+//        // Create patient
+//        Patients newPatient(pt, vt, patientType, status);
+//        
+//        // Read treatments
+//        for (int j = 0; j < nt; j++) {
+//            char treatmentType;
+//            int duration;
+//            iss >> treatmentType >> duration;
+//            
+//            treatment* newTreatment = new treatment(string(1, treatmentType), duration);
+//            newPatient.AddTreatment(newTreatment);
+//        }
+//        
+//        ALLpatients.enqueue(newPatient);
+//    }
+//
+//    file.close();
+//    cout << "File loaded successfully." << endl;
+//    cout << "Patients: " << ALLpatients.getCount() << endl;
+//}
+//
+//void Scheduler::LoadPatientsFromDesktop(string fullPath) {
+//    cout << "Loading patients from: " << fullPath << endl;
+//    LoadPatientstoAll(fullPath);
+//}
+//
 void Scheduler::movefromALL(Patients & p)
 {
   
@@ -42,12 +145,12 @@ void Scheduler::movefromALL(Patients & p)
     //else hay5osh 3la waiting 3la tol  
 
 }
-
-//void Scheduler::checkAllpatientslist()
-//{
 //
-//}
-
+////void Scheduler::checkAllpatientslist()
+////{
+////
+////}
+//
 void Scheduler::randomwaiting() {
     int x = rand() % 101; // number from 0 to 100
     //Patients p;
