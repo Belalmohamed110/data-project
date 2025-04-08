@@ -71,19 +71,17 @@ public:
 	}
 
 	/** Print all items in the stack */
-	void printStack() const {
-		cout << "\n=== Stack Contents ===" << endl;
-		cout << "Number of elements in stack: " << this->count << endl;
-		
+	void printStack() const override {
 		if (!isEmpty()) {
-			cout << "Items (top to bottom):" << endl;
 			for (int i = top; i >= 0; i--) {
-				cout << items[i] << endl;
+				cout << items[i];
+				if (i > 0)
+					cout << ", ";
 			}
-		} else {
-			cout << "Stack is empty" << endl;
+			cout << endl;
 		}
 	}
 }; // end ArrayStack
 
 #endif
+
