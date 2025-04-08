@@ -12,6 +12,7 @@ private:
 public:
 	void AddPatients(Patients* p);
 	void newlist(int currenttimestep);
+        void reschedule(int newpt,Patients *p)
 
 };
 
