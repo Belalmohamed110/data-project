@@ -16,6 +16,10 @@ void UI::ClearConsole() {
     system("cls");  // For Windows
 }
 
+void UI::printSectionHeader(const string& title) {
+    cout << string(20, '=') << " " << title << " " << string(20, '=') << endl;
+}
+
 template <typename T>
 void UI::printStack(const StackADT<T>& stack) {
     cout << "\n=== Stack Contents ===" << endl;
@@ -46,7 +50,6 @@ void UI::printPriQueueCount(const priQueue<T>& pqueue) {
 }
 
 void UI::printPatients(Patients* patientList[], int size) {
-    cout << "\n=== Patient List ===" << endl;
     for (int i = 0; i < size; i++) {
         if (patientList[i] != nullptr) {
             cout << *patientList[i] << endl;
@@ -55,6 +58,73 @@ void UI::printPatients(Patients* patientList[], int size) {
 }
 
 void UI::printResource(const Resource& res) {
-    cout << "\n=== Resource Information ===" << endl;
-    res.print();  // Using the print method from Resource class
+    res.print();
+}
+
+void UI::printSystemStatus(
+    int currentTimestep,
+    const LinkedQueue<Patients>& allList,
+    const LinkedQueue<Patients>& eTherapyList,
+    const LinkedQueue<Patients>& uTherapyList,
+    const LinkedQueue<Patients>& xTherapyList,
+    const LinkedQueue<Patients>& earlyList,
+    const LinkedQueue<Patients>& lateList,
+    const LinkedQueue<Resource>& eDevices,
+    const LinkedQueue<Resource>& uDevices,
+    const LinkedQueue<Resource>& xRooms,
+    const LinkedQueue<Patients>& inTreatmentList,
+    const LinkedQueue<Patients>& finishedList
+) {
+    ClearConsole();
+    
+    // Print current timestep
+    cout << "Current Timestep: " << currentTimestep << endl;
+    
+    // Print ALL List with dividing line
+    printSectionHeader("ALL List");
+    cout << allList.getCount() << " patients remaining: ";
+    printQueue(allList);
+    
+    // Print Waiting Lists
+    printSectionHeader("Waiting Lists");
+    cout << eTherapyList.getCount() << " E-therapy patients: ";
+    printQueue(eTherapyList);
+    cout << uTherapyList.getCount() << " U-therapy patients: ";
+    printQueue(uTherapyList);
+    cout << xTherapyList.getCount() << " X-therapy patients: ";
+    printQueue(xTherapyList);
+    
+    // Print Early List
+    printSectionHeader("Early List");
+    cout << earlyList.getCount() << " patients: ";
+    printQueue(earlyList);
+    
+    // Print Late List
+    printSectionHeader("Late List");
+    cout << lateList.getCount() << " patients: ";
+    printQueue(lateList);
+    
+    // Print Available Resources
+    printSectionHeader("Avail E-devices");
+    cout << eDevices.getCount() << " Electro device: ";
+    printQueue(eDevices);
+    
+    printSectionHeader("Avail U-devices");
+    cout << uDevices.getCount() << " Ultra device: ";
+    printQueue(uDevices);
+    
+    printSectionHeader("Avail Xrooms");
+    cout << xRooms.getCount() << " rooms: ";
+    printQueue(xRooms);
+    
+    // Print In-treatment List
+    printSectionHeader("In-treatment List");
+    cout << inTreatmentList.getCount() << " ==> ";
+    printQueue(inTreatmentList);
+    
+    // Print Finished List
+    printSectionHeader("Finished Patients");
+    cout << finishedList.getCount() << " finished patients: ";
+    cout << "(Recently finished are patients printed first)" << endl;
+    printQueue(finishedList);
 }
