@@ -14,56 +14,41 @@ template<typename T>
 class StackADT
 {
 protected:
-    int count; // Counter for number of elements in stack
+    int count;  // Counter for number of elements in stack
+
 public:
-   /** Constructor initializes count to 0 */
-   StackADT() {
-       count = 0;
-   }
+    StackADT() : count(0) {}  // Constructor initializes count to 0
+    virtual ~StackADT() {}    // Virtual destructor
 
-   /** Destroys this stack and frees its assigned memory. */
-   virtual ~StackADT() { }
+    /** Checks whether this stack is empty.
+     @return  True if the stack is empty, or false if not. */
+    virtual bool isEmpty() const = 0;
 
-   /** checks whether this stack is empty.
-    @return  True if the stack is empty, or false if not. */
-   virtual bool isEmpty() const = 0;
-   
-   /** Adds a new entry to the top of this stack.
-    @post  If the operation was successful, newEntry is at the top of the stack.
-    @param newEntry  The object to be added as a new entry.
-    @return  True if the addition is successful or false if not. */
-   virtual bool push(const T& newEntry) = 0;
-   
-   /** Copies the top item of the stack to the passed parameter and removes it from stack
-    @post  If the operation was successful, the top item of the stack
-       has been copied to TopEntry parameter.
-    @return  True if the removal is successful or false if not. */
-   virtual bool pop(T& TopEntry) = 0;
-   
-   /** Copies the top item of the stack to the passed parameter without removing it from stack
-    @pre  The stack is not empty.
-    @post  If the operation was successful, the top item of the stack
-       has been copied to TopEntry parameter.
-    @return  True if stack is not empty or false if not. */
-   virtual bool peek(T& TopEntry) const = 0;
+    /** Adds a new entry to the top of this stack.
+     @post  If the operation was successful, newEntry is at the top of the stack.
+     @param newEntry  The object to be added as a new entry.
+     @return  True if the addition is successful or false if not. */
+    virtual bool push(const T& newEntry) = 0;
 
-   /** Prints the stack contents */
-   void printStack() const {
-       cout << "\n=== Stack Contents ===" << endl;
-       cout << "Number of elements in stack: " << count << endl;
-   }
+    /** Copies the top item of the stack to the passed parameter and removes it from stack
+     @post  If the operation was successful, the top item of the stack
+        has been copied to TopEntry parameter.
+     @return  True if the removal is successful or false if not. */
+    virtual bool pop(T& TopEntry) = 0;
 
-   /** Returns the number of elements in the stack */
-   int GetCountStack() const { 
-       return count; 
-   }
-}; // end StackADT
+    /** Copies the top item of the stack to the passed parameter without removing it from stack
+     @pre  The stack is not empty.
+     @post  If the operation was successful, the top item of the stack
+        has been copied to TopEntry parameter.
+     @return  True if stack is not empty or false if not. */
+    virtual bool peek(T& TopEntry) const = 0;
+
+    /** Print the stack contents */
+    virtual void print() const = 0;
+
+    /** Returns the number of elements in the stack */
+    int getCount() const { 
+        return count; 
+    }
+};
 #endif
-
-
-
-
-
-
-
-
