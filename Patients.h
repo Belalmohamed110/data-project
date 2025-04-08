@@ -11,6 +11,7 @@ private:
 	int PID;
 	int PT;
 	int VT;
+	int adjustedPT;
 	string status;
 	string patienttype;
 	
@@ -27,6 +28,7 @@ public:
 	void setpatienttype(string& t);
 	void settreatmentcount(int c);
 
+	int getAdjustedPT();
 	void AddTreatment(treatment* t);
 	treatment* getNextTreatment();
 
