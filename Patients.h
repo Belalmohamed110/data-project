@@ -20,12 +20,12 @@ private:
 	int treatmentcount = 0;
 
 public:
-	Patients(int id, int appointmenttime, int arrivaltime, string& s, string& t);
+	Patients(int id, int appointmenttime, int arrivaltime, string s, string t);
 	void setPID(int id);
 	void setPT(int appointmenttime);
 	void setVT(int arrivaltime);
-	void setstatus(string& s);
-	void setpatienttype(string& t);
+	void setstatus(string s);
+	void setpatienttype(string t);
 	void settreatmentcount(int c);
 
 	int getAdjustedPT();
