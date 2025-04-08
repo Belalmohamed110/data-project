@@ -4,7 +4,7 @@
 using namespace std;
 
 
-Patients::Patients(int id, int pt, int vt, string& s, string& t) :
+Patients::Patients(int id, int pt, int vt, string s, string t) :
 	PID(id), PT(pt), VT(vt), status(s), patienttype(t) {
 }
 
@@ -24,12 +24,12 @@ void Patients::setVT(int arrivaltime)
 	VT = arrivaltime;
 }
 
-void Patients::setstatus(string& s)
+void Patients::setstatus(string s)
 {
 	status = s;
 }
 
-void Patients::setpatienttype(string& t)
+void Patients::setpatienttype(string  t)
 {
 	patienttype = t;
 }
