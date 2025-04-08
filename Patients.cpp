@@ -49,6 +49,17 @@ treatment* Patients::getNextTreatment() {
 	return currentTreatment;
 }
 
+int Patients::getAdjustedPT()  {
+	if (VT > PT) {
+		int penalty = (VT - PT) / 2;
+		adjustedPT = PT + penalty;
+	}
+	else {
+		adjustedPT = PT;
+	}
+	return adjustedPT;
+}
+
 int Patients::getPID()
 {
 	return PID;
