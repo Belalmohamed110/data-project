@@ -33,3 +33,30 @@ void EarlyPatients::newlist(int currenttimestep)
 	}
 	ERLY.dequeue(p, pri);
 }
+void EarlyPatients::reschedule(int newpt,Patients*p)
+{
+	
+	if (!p || newpt <= p->getPT())
+	{
+		return;
+	}
+	p->setPT(newpt);
+	priQueue<Patients*> NEW;
+	Patients* N = nullptr;
+	int pri = -p->getPT();
+	if (!ERLY.isEmpty())
+	{
+		ERLY.dequeue(N, pri);
+		if (N != p)
+		{
+			NEW.enqueue(N, pri);
+		}
+	}
+	if (!NEW.isEmpty())
+	{
+		NEW.dequeue(N, pri);
+		ERLY.enqueue(N, pri);
+	}
+	ERLY.enqueue(N, -p->getPT());
+}
+
