@@ -5,8 +5,11 @@
 #include "LatePatients.h"
 #include"AllPatients.h"
 #include"EarlyPatients.h"
+#include"E_WaitingList.h"
 #include <fstream>
 #include<sstream>
+#include "U_WaitingList.h"
+#include"X_WaitList.h"
 
 using namespace std;
 
@@ -108,38 +111,36 @@ void Scheduler::movefromALL(Patients* p)
 void Scheduler::simulation() {
     int x = rand() % 101; // number from 0 to 100
     //Patients p;
+    EarlyPatients *p;
+    E_WaitingList *e;
+    Patients *patient;
+    U_WaitingList *u;
+    X_WaitList *x;
 
     if (x < 33) {
         // E-Waiting
         if (!early.isEmpty()) {
-            EarlyPatients p;
-            
-            p.newlist(current_time_step);
-            E_Waiting.enqueue(p);
-            Patients p1();
-            p1().setstatus("E-Waiting");
+ 
+            p->newlist(current_time_step);
+            e->enqueue(patient);
+            patient->setstatus("E-Waiting");
         }
     }
     else if (x < 66 && x>=33) {
         // U-Waiting
         if (!early.isEmpty()) {
-            EarlyPatients p;
-            int pri;
-            early.dequeue(p,pri);
-            U_Waiting.enqueue(p);
-            Patients p1();
-            p1().setstatus("U-Waiting");
+          
+            p->newlist(current_time_step);
+            u-> enqueue(patient);
+            patient->setstatus("E-Waiting");
         }
     }
     else {
         // X-Waiting
         if (!early.isEmpty()) {            
-            EarlyPatients p;
-            int pri;
-            early.dequeue(p,pri);
-            X_Waiting.enqueue(p);
-            Patients p1();
-            p1().setstatus("X-Waiting");
+            p->newlist(current_time_step);
+            x-> enqueue(patient);
+            patient->setstatus("E-Waiting");
         }
     }
 
