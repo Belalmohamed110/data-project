@@ -17,12 +17,13 @@ void Scheduler::LoadPatientstoAll(string filename) {
 
     int id;
     int vt, pt;
-    while (file >> id >> vt >> pt) { // Read values
+    while (file >> id >> vt >> pt) { // hay2ra bel tarteb da 
         Patients newPatient(id, vt, pt);
-        ALLpatients.enqueue(newPatient); // Add patient to queue
+        ALLpatients.enqueue(newPatient); // 
     }
 
     file.close();
+    cout << "Patients are in ALL Patients " << filename << endl;
 }
 
 void Scheduler::movefromALL(Patients & p)
