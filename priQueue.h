@@ -1,4 +1,4 @@
-pragma once
+#pragma once
 #include "priNode.h"
 #include <iostream>
 using namespace std;
@@ -71,23 +71,17 @@ public:
 
     // Print the priority queue contents
     void print() const {
-        cout << "\n=== Priority Queue Contents ===" << endl;
-        cout << "Number of elements: " << count << endl;
-        
         if (!isEmpty()) {
-            cout << "Items (Highest to Lowest Priority):" << endl;
             priNode<T>* current = head;
-            int position = 1;
-            
             while (current != nullptr) {
                 int pri;
                 T item = current->getItem(pri);
-                cout << position << ". Priority: " << pri << ", Item: " << item << endl;
+                cout << item;
+                if (current->getNext() != nullptr)
+                    cout << ", ";
                 current = current->getNext();
-                position++;
             }
-        } else {
-            cout << "Priority Queue is empty" << endl;
+            cout << endl;
         }
     }
 };
