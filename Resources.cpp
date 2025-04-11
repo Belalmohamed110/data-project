@@ -1,4 +1,4 @@
-include "Resources.h"
+#include "Resources.h"
 
 Resources::Resources(int id, string rtype) {
     ID = id;
