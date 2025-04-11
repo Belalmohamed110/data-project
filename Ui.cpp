@@ -57,7 +57,7 @@ void UI::printPatients(Patients* patientList[], int size) {
     }
 }
 
-void UI::printResource(const Resource& res) {
+void UI::printResource(const Resources & res) {
     res.print();
 }
 
