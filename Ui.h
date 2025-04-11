@@ -15,7 +15,7 @@ public:
     
     void ClearConsole();
     void printPatients(Patients* patientList[], int size);
-    void printResource(const Resource& res);
+    void printResource(const Resources & res);
     void printSectionHeader(const string& title);
     
     // Template functions must stay in header
@@ -58,10 +58,12 @@ public:
         const LinkedQueue<Patients>& xTherapyList,
         const LinkedQueue<Patients>& earlyList,
         const LinkedQueue<Patients>& lateList,
-        const LinkedQueue<Resource>& eDevices,
-        const LinkedQueue<Resource>& uDevices,
-        const LinkedQueue<Resource>& xRooms,
+        const LinkedQueue<Resources>& eDevices,
+        const LinkedQueue<Resources>& uDevices,
+        const LinkedQueue<Resources>& xRooms,
         const LinkedQueue<Patients>& inTreatmentList,
         const LinkedQueue<Patients>& finishedList
     );
+    template<typename T>
+    void printPriQueue(const priQueue<T>& pqueue);
 };
