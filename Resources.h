@@ -18,12 +18,15 @@ public:
 	// Getters
 	int getID() const;
 	string getresourcetype() const;
+	Patients* getAssignedPatient() const;
 	Patients* getPatient() const { return p; }
 	bool isEmpty() const { return p == nullptr; }
 
 	// Setters
 	void setID(int id);
 	void setresourcetype(string rtype);
+	bool assignPatient(Patients* patient);
+	bool removePatient();
 	void setPatient(Patients* patient) { p = patient; }
 
 	// Print method - outputs the resource identifier
