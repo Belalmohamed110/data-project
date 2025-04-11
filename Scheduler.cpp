@@ -7,9 +7,16 @@
 #include"EarlyPatients.h"
 #include"E_WaitingList.h"
 #include <fstream>
-#include<sstream>
 #include "U_WaitingList.h"
-#include"X_WaitList.h"
+#include"X_WaitingList.h"
+#include"LinkedQueue.h"
+#include"Node.h"
+#include"priNode.h"
+#include"priQueue.h"
+#include"StackADT.h"
+#include "ArrayStack.h"
+#include"QueueADT.h"
+#include<sstream>
 
 using namespace std;
 
@@ -82,17 +89,21 @@ void Scheduler::LoadPatientstoAll(string filename) {
 }
 void Scheduler::movefromALL(Patients* p)
 {
+
+
+
+/*
     EarlyPatients early;
     LatePatients late;
-    if (p->getVT() < p->getPT()) {
-        ALLpatients.dequeue(*p);
+    */if (p->getVT() < p->getPT()) {
+      /*  ALLpatients.dequeue(*p);
         early.AddPatients(p);
         p->setstatus("early wait list");
-    }
+    */}
     else if (p->getVT() > p->getPT()) {
-        ALLpatients.dequeue(*p);
+      /*  ALLpatients.dequeue(*p);
         late.AddPatient(p);
-        p->setstatus("late wait list");
+        p->setstatus("late wait list");*/
 
     }
 }
