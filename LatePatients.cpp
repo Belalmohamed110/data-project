@@ -3,6 +3,10 @@
 #include"Patients.h"
 #include"priQueue.h"
 using namespace std;
+
+// mmken mn priqueu 3ady 
+
+
 void LatePatients::AddPatient(Patients*p)
 {
 	int pri=p->getPT() + p->penaltytime();
