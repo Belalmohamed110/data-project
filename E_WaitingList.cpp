@@ -1,4 +1,6 @@
 #include "E_WaitingList.h"
+#include "LinkedQueue.h"
+#include "Patients.h"
 
 bool E_WaitingList::enqueue(Patients* p) {
     if (isEmpty()) {
@@ -35,3 +37,4 @@ bool E_WaitingList::enqueue(Patients* p) {
 
     return true;
 }
+
