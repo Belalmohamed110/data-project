@@ -116,3 +116,4 @@ ostream& operator<<(ostream& out, const Patients* patient) {
 }
 
 treatment* Patients::getCurrentTreatment(){ return currentTreatment; }
+treatment* Patients:: getEndtime() {return endtime;}
