@@ -2,7 +2,7 @@
 #include "PriQueue.h"
 #include "Patients.h"
 
-class InTreatmentList : public PriQueue<Patient*> {
+class InTreatmentList : public priQueue <Patients *> {
 public:
     InTreatmentList();
 };
