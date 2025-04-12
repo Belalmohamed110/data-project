@@ -21,3 +21,9 @@ void AllPatients::CreateInputFile()
     std::cout << "File created successfully!" << std::endl;
 
 }
+//lists only store patienrts -> enquque and dequeue only 
+//file -> all -> schedueler -> hwa el biwz3 kol haga
+// 7oto 3ndk w b3d shwia hakhdo 3shan m3ado geh 
+// print kolohom
+
+// patient -> object mn queue bas msh mstahla class.
