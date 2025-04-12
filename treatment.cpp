@@ -59,5 +59,3 @@ int treatment::getstarttime() {
 void treatment:: getEndtime() {
 	endtime = starttime + duration;
 }
-
-
