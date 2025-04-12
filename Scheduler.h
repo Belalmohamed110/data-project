@@ -1,21 +1,12 @@
-#include<iostream>
+#pragma once
+#include <iostream>
+#include <fstream>
 #include"Patients.h"
 #include"Resources.h"
 #include "LatePatients.h"
-#include"AllPatients.h"
 #include"EarlyPatients.h"
-#include"E_WaitingList.h"
-#include <fstream>
-#include "U_WaitingList.h"
-#include"X_WaitingList.h"
-#include"LinkedQueue.h"
-#include"Node.h"
-#include"priNode.h"
 #include"priQueue.h"
-#include"StackADT.h"
-#include "ArrayStack.h"
 #include"QueueADT.h"
-#include<sstream>
 
 
 using namespace std;
@@ -36,8 +27,8 @@ public:
 	void LoadPatientstoAll(string filename);
 	void movefromALL(Patients * p);
 	//void checkAllpatientslist();
-	void simulation();
-	//void simulation(int max_time_steps);
+	void randomwaiting();
+	void simulation(int max_time_steps);
 	/*void settime();
 	int gettime();*/
 	//void simulation();
