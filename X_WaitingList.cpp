@@ -1,8 +1,12 @@
 #include "X_WaitingList.h"
+#include"LinkedQueue.h"
+#include"Patients.h"
+
 
 // Ordered insertion by adjustedPT (same as E_WaitList)
 
-bool X_WaitList::enqueue(Patients* p) {
+bool X_WaitingList::enqueue(Patients* p) {
+   
     if (isEmpty()) {
         return LinkedQueue<Patients*>::enqueue(p);
     }
@@ -35,7 +39,7 @@ bool X_WaitList::enqueue(Patients* p) {
 }
 
 // Remove a patient at a specific index
-Patients* X_WaitList::removePatientAtIndex(int index) {
+Patients* X_WaitingList::removePatientAtIndex(int index) {
     if (index < 0 || index >= getcount()) return nullptr;
 
     LinkedQueue<Patients*> tempQueue;
