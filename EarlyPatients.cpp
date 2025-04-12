@@ -31,7 +31,7 @@ void EarlyPatients::newlist(int currenttimestep)
 	{
 		return;
 	}
-	ERLY.dequeue(p, pri);
+	ERLY.dequeue(p, pri); // Warning !! Patient Out of system 
 }
 void EarlyPatients::reschedule(int newpt,Patients*p)
 {
