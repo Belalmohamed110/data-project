@@ -20,8 +20,7 @@ class Input_file
     }
 
     int main() {
-        CreateInputFile();
-        return 0;
+        CreateInputFile();        return 0;
     }
 
 };
