@@ -9,7 +9,7 @@ template <typename T>
 class priQueue
 {
 private:
-    priNode <T>* head; 
+    priNode<T>* head;
     int count;  // Counter for number of elements
 
 public:
