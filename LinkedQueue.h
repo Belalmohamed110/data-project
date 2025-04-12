@@ -216,3 +216,5 @@ void LinkedQueue<T>::print() const {
 		cout << endl;
 	}
 }
+
+#endif
