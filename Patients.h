@@ -17,6 +17,7 @@ private:
 	
 	LinkedQueue<treatment*> treatments;
 	treatment* currentTreatment;
+	treatment* endtime;
 	int treatmentcount = 0;
 
 public:
@@ -42,6 +43,8 @@ public:
 	friend ostream& operator<<(ostream& out, const Patients* patient);
 
 	treatment* getCurrentTreatment();
+	treatment* getEndtime();
+
 
 
 };
