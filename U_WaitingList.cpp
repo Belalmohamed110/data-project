@@ -1,5 +1,8 @@
 #include "U_WaitingList.h"
-bool u_WaitingList::enqueue(Patients* p) {
+#include "LinkedQueue.h"
+#include "Patients.h"
+
+bool U_WaitingList::enqueue(Patients* p) {
     if (isEmpty()) {
              return LinkedQueue<Patients*>::enqueue(p);
     }
