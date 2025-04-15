@@ -91,21 +91,24 @@ void Scheduler::movefromALL(Patients* p)
 {
 
 
+for (int i = 0; i < 30; i++) {
+    //Node<Patients*>* ptr = new Node<Patients*>(p);
+    //Patients *ptr;
+    
+    p=ALLpatients.frontPtr->getItem();
 
-/*
-    EarlyPatients early;
-    LatePatients late;
-    */if (p->getVT() < p->getPT()) {
-      /*  ALLpatients.dequeue(*p);
-        early.AddPatients(p);
-        p->setstatus("early wait list");
-    */}
+
+
+    if (p->getVT() < p->getPT()) {
+        //  ALLpatients.dequeue(*p);
+       
+       early.enqueue(p, p->getPT());
+    }
     else if (p->getVT() > p->getPT()) {
-      /*  ALLpatients.dequeue(*p);
-        late.AddPatient(p);
-        p->setstatus("late wait list");*/
+		late.enqueue(p, p->getPT());    
 
     }
+}
 }
 //
 //void Scheduler::LoadPatientsFromDesktop(string fullPath) {
