@@ -21,7 +21,12 @@
 using namespace std;
 class Scheduler
 {
-	int current_time_step=0 ;
+
+
+
+public:
+	int current_time_step = 0;
+	EarlyPatients ERLY;
 	priQueue<Patients*>early;
 	priQueue<Patients*>late;
 	LinkedQueue<Patients*> ALLpatients;
@@ -31,14 +36,12 @@ class Scheduler
 	LinkedQueue<Patients*> U_Waiting;
 	LinkedQueue<Patients*> X_Waiting;
 	LinkedQueue<Patients*> finished;
-
-
-public:
 	Scheduler();
 	void LoadPatientstoAll(string filename);
 	void movefromALL(Patients * p);
 	//void checkAllpatientslist();
 	void simulation();
+	void reschedule(int newpt,Patients*p1);
 	//void simulation(int max_time_steps);
 	/*void settime();
 	int gettime();*/
