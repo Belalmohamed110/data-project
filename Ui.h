@@ -7,12 +7,16 @@
 #include "priQueue.h"
 #include "Patients.h"
 #include "Resources.h"
+#include "Scheduler.h"
+
 using namespace std;
+
 
 class UI {
 public:
     UI();  // Constructor declaration
     
+
     void ClearConsole();
     void printPatients(Patients* patientList[], int size);
     void printResource(const Resources& res);
@@ -20,48 +24,46 @@ public:
     
     // Template functions must stay in header
     template <typename T>
-    void printStack(const StackADT<T>& stack) {
-        stack.printStack();
-    }
+    void printStack(const StackADT<T>& stack); 
+     /*   stack.printStack();*/
+    
     
     template <typename T>
-    void printStackCount(const StackADT<T>& stack) {
-        cout << stack.GetCountStack();
-    }
+    void printStackCount(const StackADT<T>& stack); /*{*/
+        /*cout << stack.GetCountStack();*/
+ /*   }*/
     
     template <typename T>
-    void printQueue(const LinkedQueue<T>& queue) {
-        queue.print();
-    }
+    void printQueue(const LinkedQueue<T>& queue); /*{*/
+       /* queue.print();*/
+  /*  }*/
     
     template <typename T>
-    void printQueueCount(const QueueADT<T>& queue) {
+    void printQueueCount(const QueueADT<T>& queue);/* {
         cout << queue.getCount();
-    }
+    }*/
 
     template <typename T>
-    void printPriQueue(const priQueue<T>& pqueue) {
+    void printPriQueue(const priQueue<T>& pqueue); /*{
         pqueue.print();
-    }
+    }*/
     
     template <typename T>
-    void printPriQueueCount(const priQueue<T>& pqueue) {
+    void printPriQueueCount(const priQueue<T>& pqueue);/*{
         cout << pqueue.getCount();
-    }
+    }*/
 
     // Print the entire system status
-    void printSystemStatus(
-        int currentTimestep,
-        const LinkedQueue<Patients>& allList,
-        const LinkedQueue<Patients>& eTherapyList,
-        const LinkedQueue<Patients>& uTherapyList,
-        const LinkedQueue<Patients>& xTherapyList,
-        const LinkedQueue<Patients>& earlyList,
-        const LinkedQueue<Patients>& lateList,
-        const LinkedQueue<Resources>& eDevices,
-        const LinkedQueue<Resources>& uDevices,
-        const LinkedQueue<Resources>& xRooms,
-        const LinkedQueue<Patients>& inTreatmentList,
-        const LinkedQueue<Patients>& finishedList
-    );
-};
+    void printSystemStatus();
+};/*
+//const LinkedQueue<Patients>& allList,
+//const LinkedQueue<Patients>& eTherapyList,
+//const LinkedQueue<Patients>& uTherapyList,
+//const LinkedQueue<Patients>& xTherapyList,
+//const LinkedQueue<Patients>& earlyList,
+//const LinkedQueue<Patients>& lateList,
+//const LinkedQueue<Resources>& eDevices,
+//const LinkedQueue<Resources>& uDevices,
+//const LinkedQueue<Resources>& xRooms,
+//const LinkedQueue<Patients>& inTreatmentList,
+//const LinkedQueue<Patients>& finishedList*/
