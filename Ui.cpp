@@ -1,11 +1,23 @@
 #include "Ui.h"
 #include "StackADT.h"
-#include "QueueADT.h"
-#include "LinkedQueue.h"
-#include "priQueue.h"
-#include "Patients.h"
-#include "Resources.h"
-#include <iostream>
+#include<iostream>
+#include"Patients.h"
+#include"Resources.h"
+#include "Scheduler.h"
+#include "LatePatients.h"
+#include"AllPatients.h"
+#include"EarlyPatients.h"
+#include"E_WaitingList.h"
+#include <fstream>
+#include "U_WaitingList.h"
+#include"X_WaitingList.h"
+#include"LinkedQueue.h"
+#include"Node.h"
+#include"priNode.h"
+#include"priQueue.h"
+#include "ArrayStack.h"
+#include"QueueADT.h"
+#include<sstream>
 using namespace std;
 
 UI::UI() {
@@ -39,7 +51,7 @@ void UI::printQueueCount(const QueueADT<T>& queue) {
 }
 
 template <typename T>
-void UI::printPriQueue(const priQueue<T>& pqueue) {
+void UI::printPriQueue (const priQueue<T>& pqueue) {
     pqueue.print();  // Using the print method from priQueue
 }
 
@@ -52,43 +64,30 @@ void UI::printPriQueueCount(const priQueue<T>& pqueue) {
 void UI::printPatients(Patients* patientList[], int size) {
     for (int i = 0; i < size; i++) {
         if (patientList[i] != nullptr) {
-            cout << *patientList[i] << endl;
+            cout << patientList[i] << endl;
         }
     }
 }
 
-void UI::printResource(const Resource& res) {
+void UI::printResource(const Resources& res) {
     res.print();
 }
 
-void UI::printSystemStatus(
-    int currentTimestep,
-    const LinkedQueue<Patients>& allList,
-    const LinkedQueue<Patients>& eTherapyList,
-    const LinkedQueue<Patients>& uTherapyList,
-    const LinkedQueue<Patients>& xTherapyList,
-    const LinkedQueue<Patients>& earlyList,
-    const LinkedQueue<Patients>& lateList,
-    const LinkedQueue<Resource>& eDevices,
-    const LinkedQueue<Resource>& uDevices,
-    const LinkedQueue<Resource>& xRooms,
-    const LinkedQueue<Patients>& inTreatmentList,
-    const LinkedQueue<Patients>& finishedList
-) {
+void UI::printSystemStatus() {
     ClearConsole();
     
     // Print current timestep
-    cout << "Current Timestep: " << currentTimestep << endl;
+    cout << "Current Timestep: " << current_time_step << endl;
     
     // Print ALL List with dividing line
-    printSectionHeader("ALL List");
-    cout << allList.getCount() << " patients remaining: ";
-    printQueue(allList);
-    
+    printSectionHeader("ALL List"); 
+    cout << ALLpatients << " patients remaining: ";
+    printQueue(ALLpatients);
+     
     // Print Waiting Lists
     printSectionHeader("Waiting Lists");
-    cout << eTherapyList.getCount() << " E-therapy patients: ";
-    printQueue(eTherapyList);
+    cout << early.getCount() << " E-therapy patients: ";
+    printQueue(early);
     cout << uTherapyList.getCount() << " U-therapy patients: ";
     printQueue(uTherapyList);
     cout << xTherapyList.getCount() << " X-therapy patients: ";
@@ -96,11 +95,11 @@ void UI::printSystemStatus(
     
     // Print Early List
     printSectionHeader("Early List");
-    cout << earlyList.getCount() << " patients: ";
-    printQueue(earlyList);
-    
+    cout << earlyList.getCount() << " patients: "; 
+    printQueue(earlyList); 
+     
     // Print Late List
-    printSectionHeader("Late List");
+    printSectionHeader("Late List"); 
     cout << lateList.getCount() << " patients: ";
     printQueue(lateList);
     
@@ -118,8 +117,8 @@ void UI::printSystemStatus(
     printQueue(xRooms);
     
     // Print In-treatment List
-    printSectionHeader("In-treatment List");
-    cout << inTreatmentList.getCount() << " ==> ";
+    printSectionHeader("In-treatment List") ;
+     cout << inTreatmentList.getCount() << " ==> ";
     printQueue(inTreatmentList);
     
     // Print Finished List
